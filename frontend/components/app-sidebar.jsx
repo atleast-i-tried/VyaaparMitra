@@ -2,7 +2,9 @@
 
 import * as React from "react"
 import {
+  IconBuildingWarehouse,
   IconCamera,
+  IconCategory,
   IconChartBar,
   IconDashboard,
   IconDatabase,
@@ -13,9 +15,11 @@ import {
   IconHelp,
   IconInnerShadowTop,
   IconListDetails,
+  IconMoneybag,
   IconReport,
   IconSearch,
   IconSettings,
+  IconStack3,
   IconUsers,
 } from "@tabler/icons-react"
 
@@ -35,35 +39,30 @@ import {
 
 const data = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
+    name: "admin",
+    email: "admin@gmail.com",
     avatar: "/avatars/shadcn.jpg",
   },
   navMain: [
     {
       title: "Dashboard",
-      url: "#",
+      url: "/dashboard",
       icon: IconDashboard,
     },
     {
-      title: "Lifecycle",
-      url: "#",
-      icon: IconListDetails,
+      title: "Categories",
+      url: "/dashboard/category",
+      icon: IconCategory,
     },
     {
-      title: "Analytics",
-      url: "#",
-      icon: IconChartBar,
+      title: "Products",
+      url: "/dashboard/products",
+      icon: IconStack3,
     },
     {
-      title: "Projects",
-      url: "#",
-      icon: IconFolder,
-    },
-    {
-      title: "Team",
-      url: "#",
-      icon: IconUsers,
+      title: "Sales",
+      url: "/dashboard/sales",
+      icon: IconMoneybag,
     },
   ],
   navClouds: [
@@ -117,35 +116,25 @@ const data = {
   navSecondary: [
     {
       title: "Settings",
-      url: "#",
+      url: "/dashboard/settings",
       icon: IconSettings,
-    },
-    {
-      title: "Get Help",
-      url: "#",
-      icon: IconHelp,
-    },
-    {
-      title: "Search",
-      url: "#",
-      icon: IconSearch,
     },
   ],
   documents: [
     {
-      name: "Data Library",
-      url: "#",
-      icon: IconDatabase,
-    },
-    {
-      name: "Reports",
-      url: "#",
+      name: "Sales: Today",
+      url: "/dashboard/reports/todaysales",
       icon: IconReport,
     },
     {
-      name: "Word Assistant",
-      url: "#",
-      icon: IconFileWord,
+      name: "Sales: Weekly",
+      url: "/dashboard/reports/weeklysales",
+      icon: IconReport,
+    },
+    {
+      name: "Sales: Monthly",
+      url: "/dashboard/reports/monthlysales",
+      icon: IconReport,
     },
   ],
 }
@@ -160,8 +149,9 @@ export function AppSidebar({
           <SidebarMenuItem>
             <SidebarMenuButton asChild className="data-[slot=sidebar-menu-button]:!p-1.5">
               <a href="#">
-                <IconInnerShadowTop className="!size-5" />
-                <span className="text-base font-semibold">Acme Inc.</span>
+                <IconBuildingWarehouse
+ className="!size-5" />
+                <span className="text-base font-semibold">Vyaapar Mitra</span>
               </a>
             </SidebarMenuButton>
           </SidebarMenuItem>
