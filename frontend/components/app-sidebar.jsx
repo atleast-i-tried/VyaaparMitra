@@ -51,7 +51,7 @@ const data = {
     },
     {
       title: "Categories",
-      url: "/dashboard/category",
+      url: "/dashboard/categories",
       icon: IconCategory,
     },
     {
