@@ -39,11 +39,6 @@ import {
 import { useSession } from "next-auth/react"
 
 const data = {
-  user: {
-    name: "admin",
-    email: "admin@gmail.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
   navMain: [
     {
       title: "Dashboard",

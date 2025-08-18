@@ -1,4 +1,8 @@
-import { Wrench, PiggyBank, ReceiptText, LineChart, ShieldCheck, TrendingUp, Handshake } from "lucide-react";
+"use client"
+
+import { Github, Linkedin } from "lucide-react";
+import { useState } from "react";
+import { Menu, X, Wrench, PiggyBank, ReceiptText, LineChart, ShieldCheck, TrendingUp, Handshake } from "lucide-react";
 
 const features = [
   { Icon: ReceiptText, title: "Smart Invoicing", desc: "Create and manage invoices effortlessly with automated tracking." },
@@ -14,11 +18,75 @@ const whyChooseUs = [
 ];
 
 const Home = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <div className="min-h-screen font-sans relative overflow-hidden bg-white text-gray-900">
+    <div className="min-h-screen font-sans relative overflow-hidden bg-white text-gray-900 scroll-smooth">
+
+      {/* Header */}
+      <header className="fixed top-0 left-0 w-full bg-white shadow-md z-50">
+        <div className="max-w-7xl mx-auto flex justify-between items-center py-4 px-6">
+          <h2 className="text-2xl font-extrabold text-blue-600">Vyaapar Mitra</h2>
+
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex gap-6 text-gray-800 font-medium items-center">
+            <a href="#home" className="hover:text-blue-600">Home</a>
+            <a href="#about" className="hover:text-blue-600">About Us</a>
+            <a href="#why" className="hover:text-blue-600">Features</a>
+            <a href="#contact" className="hover:text-blue-600">Contact</a>
+            <a
+              href="/login"
+              className="px-4 py-2 rounded-full border-2 border-gray-700 bg-white text-gray-800 font-semibold hover:bg-gray-100 transition"
+            >
+              Login
+            </a>
+            <a
+              href="/register"
+              className="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 font-semibold"
+            >
+              Register
+            </a>
+          </nav>
+
+          {/* Mobile Hamburger */}
+          <button
+            className="md:hidden text-gray-800"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            {menuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        {menuOpen && (
+          <div className="md:hidden bg-white shadow-lg border-t border-gray-200 flex flex-col items-start px-6 py-4 gap-4">
+            <a href="#home" onClick={() => setMenuOpen(false)} className="hover:text-blue-600">Home</a>
+            <a href="#about" onClick={() => setMenuOpen(false)} className="hover:text-blue-600">About Us</a>
+            <a href="#why" onClick={() => setMenuOpen(false)} className="hover:text-blue-600">Features</a>
+            <a href="#contact" onClick={() => setMenuOpen(false)} className="hover:text-blue-600">Contact</a>
+            <a
+              href="/login"
+              onClick={() => setMenuOpen(false)}
+              className="w-full text-center px-4 py-2 rounded-full border-2 border-gray-700 bg-white text-gray-800 font-semibold hover:bg-gray-100 transition"
+            >
+              Login
+            </a>
+            <a
+              href="/register"
+              onClick={() => setMenuOpen(false)}
+              className="w-full text-center bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 font-semibold"
+            >
+              Register
+            </a>
+          </div>
+        )}
+      </header>
 
       {/* Hero Section */}
-      <main className="flex flex-col items-center justify-center text-center py-28 px-6 relative z-10 text-gray-900 bg-white">
+      <main
+        id="home"
+        className="flex flex-col items-center justify-center text-center py-40 px-6 relative z-10 text-gray-900 bg-white scroll-mt-20"
+      >
         <div className="relative z-10">
           <h1 className="text-5xl md:text-7xl font-extrabold leading-tight mb-6">
             Your Business, <br />
@@ -30,7 +98,6 @@ const Home = () => {
             The all-in-one ERP solution for inventory, sales, invoicing & analytics — built to help you grow smarter and faster.
           </p>
 
-          {/* Call-to-Action Buttons */}
           <div className="flex flex-col md:flex-row gap-5 justify-center">
             <a
               href="/register"
@@ -48,8 +115,19 @@ const Home = () => {
         </div>
       </main>
 
+      {/* About Us */}
+      <section id="about" className="py-20 px-6 bg-gray-100 scroll-mt-20">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl font-extrabold mb-6 text-blue-600">About Us</h2>
+          <p className="text-lg text-gray-700">
+            Vyaapar Mitra is built to simplify business operations for small and medium businesses. 
+            From inventory tracking to invoicing and analytics, we provide everything you need in one place.
+          </p>
+        </div>
+      </section>
+
       {/* Features */}
-      <section className="py-20 px-6 bg-gray-200">
+      <section id="features" className="py-20 px-6 bg-gray-200 scroll-mt-20">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4 max-w-7xl mx-auto">
           {features.map((f, i) => (
             <div
@@ -65,7 +143,7 @@ const Home = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-20 px-6 bg-gray-300">
+      <section id="why" className="py-20 px-6 bg-gray-300 scroll-mt-20">
         <h2 className="text-4xl md:text-5xl font-extrabold mb-6 text-center">
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-cyan-500">
             Why Choose Vyaapar Mitra?
@@ -89,10 +167,39 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Contact */}
+      <section id="contact" className="py-20 px-6 bg-gray-100 text-center scroll-mt-20">
+        <h2 className="text-4xl font-extrabold mb-6 text-blue-600">Contact Us</h2>
+        <p className="text-lg text-gray-700">
+          Have questions? Reach out to us at{" "}
+          <a href="mailto:support@vyaaparmitra.com" className="text-blue-600 underline">
+            support@vyaaparmitra.com
+          </a>
+        </p>
+      </section>
+
       {/* Footer */}
-      <footer className="py-8 text-center text-sm bg-gray-900 border-t border-gray-800 text-gray-400">
-        <div className="container mx-auto">
-          <p>&copy; {new Date().getFullYear()} Vyaapar Mitra. All rights reserved.</p>
+      <footer className="bg-gray-900 text-white py-6 mt-12">
+        <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-6">
+          <p className="text-sm">© VyaaparMitra | Made by Abhinav</p>
+          <div className="flex space-x-6 mt-4 md:mt-0">
+            <a 
+              href="https://github.com/atleast-i-tried" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-gray-400"
+            >
+              <Github size={20} />
+            </a>
+            <a 
+              href="https://linkedin.com/in/abhhinavguptaa" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-gray-400"
+            >
+              <Linkedin size={20} />
+            </a>
+          </div>
         </div>
       </footer>
     </div>
