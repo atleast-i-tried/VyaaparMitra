@@ -347,7 +347,7 @@ export default function NewInvoicePage() {
                       className="cursor-pointer p-2 hover:bg-muted rounded"
                       onClick={() => handleSelectProduct(product)}
                     >
-                      {product.name} - ${product.price} - {product.stock} in
+                      {product.name} - ₹{product.price} - {product.stock} in
                       stock
                     </div>
                   ))}
@@ -439,19 +439,19 @@ export default function NewInvoicePage() {
               <div className="col-span-2 flex flex-col justify-end space-y-2">
                 <div className="flex justify-between">
                   <span>Subtotal:</span>
-                  <span>${subtotal.toFixed(2)}</span>
+                  <span>₹{subtotal.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Discount ({DISCOUNT_RATE * 100}%):</span>
-                  <span>-${discountAmount.toFixed(2)}</span>
+                  <span>-₹{discountAmount.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Tax ({TAX_RATE * 100}%):</span>
-                  <span>${taxAmount.toFixed(2)}</span>
+                  <span>₹{taxAmount.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between font-semibold">
                   <span>Total:</span>
-                  <span>${total.toFixed(2)}</span>
+                  <span>₹{total.toFixed(2)}</span>
                 </div>
                 <div className="flex gap-2 w-full items-center">
                   <Button type="submit" disabled={saving}>

@@ -13,7 +13,7 @@ import { IconDotsVertical } from "@tabler/icons-react";
 import { format } from "date-fns";
 import Link from "next/link";
 
-export const getColumns = (filters, handleFilterChange, onEdit, onDelete) => [
+export const getColumns = (filters, handleFilterChange, onDelete) => [
   {
     accessorKey: "invoice_number",
     header: () => (
@@ -75,6 +75,7 @@ export const getColumns = (filters, handleFilterChange, onEdit, onDelete) => [
     ),
     cell: (info) => {
       const date = info.getValue();
+
       return date ? format(new Date(date), "yyyy-MM-dd hh:mm a") : "N/A";
     },
   },
@@ -83,7 +84,8 @@ export const getColumns = (filters, handleFilterChange, onEdit, onDelete) => [
     header: "Total",
     cell: (info) => {
       const total = info.getValue();
-      return total ? `₹${total.toFixed(2)}` : "N/A"; // Rupee symbol
+
+      return total ? `$${total.toFixed(2)}` : "N/A";
     },
   },
   {
